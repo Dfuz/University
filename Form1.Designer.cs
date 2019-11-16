@@ -41,11 +41,11 @@
             this.DisciplinesDataGV = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.добавитьДисциплинуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.изменитьДанныеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьДисциплинуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EnrolleesDataGV)).BeginInit();
@@ -89,6 +89,7 @@
             this.EnrolleesDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EnrolleesDataGV.Location = new System.Drawing.Point(3, 27);
             this.EnrolleesDataGV.Name = "EnrolleesDataGV";
+            this.EnrolleesDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.EnrolleesDataGV.Size = new System.Drawing.Size(825, 417);
             this.EnrolleesDataGV.TabIndex = 1;
             this.EnrolleesDataGV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EnrolleesDataGV_KeyUp);
@@ -177,6 +178,29 @@
             this.добавитьДисциплинуToolStripMenuItem.Text = "Добавить дисциплину";
             this.добавитьДисциплинуToolStripMenuItem.Click += new System.EventHandler(this.добавитьДисциплинуToolStripMenuItem_Click);
             // 
+            // изменитьДанныеToolStripMenuItem1
+            // 
+            this.изменитьДанныеToolStripMenuItem1.Name = "изменитьДанныеToolStripMenuItem1";
+            this.изменитьДанныеToolStripMenuItem1.Size = new System.Drawing.Size(117, 20);
+            this.изменитьДанныеToolStripMenuItem1.Text = "Изменить данные";
+            this.изменитьДанныеToolStripMenuItem1.Click += new System.EventHandler(this.изменитьДанныеToolStripMenuItem1_Click);
+            // 
+            // удалитьДисциплинуToolStripMenuItem
+            // 
+            this.удалитьДисциплинуToolStripMenuItem.Name = "удалитьДисциплинуToolStripMenuItem";
+            this.удалитьДисциплинуToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
+            this.удалитьДисциплинуToolStripMenuItem.Text = "Удалить дисциплину";
+            this.удалитьДисциплинуToolStripMenuItem.Click += new System.EventHandler(this.удалитьДисциплинуToolStripMenuItem_Click);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(831, 447);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Специальности";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -204,29 +228,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 30);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // изменитьДанныеToolStripMenuItem1
-            // 
-            this.изменитьДанныеToolStripMenuItem1.Name = "изменитьДанныеToolStripMenuItem1";
-            this.изменитьДанныеToolStripMenuItem1.Size = new System.Drawing.Size(117, 20);
-            this.изменитьДанныеToolStripMenuItem1.Text = "Изменить данные";
-            this.изменитьДанныеToolStripMenuItem1.Click += new System.EventHandler(this.изменитьДанныеToolStripMenuItem1_Click);
-            // 
-            // удалитьДисциплинуToolStripMenuItem
-            // 
-            this.удалитьДисциплинуToolStripMenuItem.Name = "удалитьДисциплинуToolStripMenuItem";
-            this.удалитьДисциплинуToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
-            this.удалитьДисциплинуToolStripMenuItem.Text = "Удалить дисциплину";
-            this.удалитьДисциплинуToolStripMenuItem.Click += new System.EventHandler(this.удалитьДисциплинуToolStripMenuItem_Click);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(831, 447);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Специальности";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

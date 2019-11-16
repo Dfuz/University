@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddExam));
             this.CancelBT = new System.Windows.Forms.Button();
             this.OkBT = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.secondnameTB = new System.Windows.Forms.MaskedTextBox();
+            this.ExaminerTB = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.DisciplinesCB = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.ScoreNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.CommentTB = new System.Windows.Forms.MaskedTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.ScoreNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // CancelBT
@@ -70,12 +71,13 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Предмет";
             // 
-            // secondnameTB
+            // ExaminerTB
             // 
-            this.secondnameTB.Location = new System.Drawing.Point(113, 26);
-            this.secondnameTB.Name = "secondnameTB";
-            this.secondnameTB.Size = new System.Drawing.Size(211, 20);
-            this.secondnameTB.TabIndex = 12;
+            this.ExaminerTB.Location = new System.Drawing.Point(113, 26);
+            this.ExaminerTB.Name = "ExaminerTB";
+            this.ExaminerTB.Size = new System.Drawing.Size(211, 20);
+            this.ExaminerTB.TabIndex = 12;
+            this.ExaminerTB.TextChanged += new System.EventHandler(this.ExaminerTB_TextChanged);
             // 
             // label1
             // 
@@ -103,12 +105,12 @@
             this.label3.TabIndex = 22;
             this.label3.Text = "Количество набранных баллов";
             // 
-            // numericUpDown1
+            // ScoreNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(204, 111);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 23;
+            this.ScoreNumericUpDown.Location = new System.Drawing.Point(204, 111);
+            this.ScoreNumericUpDown.Name = "ScoreNumericUpDown";
+            this.ScoreNumericUpDown.Size = new System.Drawing.Size(120, 20);
+            this.ScoreNumericUpDown.TabIndex = 23;
             // 
             // label4
             // 
@@ -119,31 +121,35 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Комментарий";
             // 
-            // maskedTextBox1
+            // CommentTB
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(113, 157);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(211, 20);
-            this.maskedTextBox1.TabIndex = 25;
+            this.CommentTB.Location = new System.Drawing.Point(113, 157);
+            this.CommentTB.Name = "CommentTB";
+            this.CommentTB.Size = new System.Drawing.Size(211, 20);
+            this.CommentTB.TabIndex = 25;
+            this.CommentTB.TextChanged += new System.EventHandler(this.CommentTB_TextChanged);
             // 
             // AddExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 251);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.CommentTB);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.ScoreNumericUpDown);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DisciplinesCB);
             this.Controls.Add(this.CancelBT);
             this.Controls.Add(this.OkBT);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.secondnameTB);
+            this.Controls.Add(this.ExaminerTB);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddExam";
-            this.Text = "AddExam";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Добавление результатов экзамена";
+            ((System.ComponentModel.ISupportInitialize)(this.ScoreNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -154,12 +160,12 @@
         private System.Windows.Forms.Button CancelBT;
         private System.Windows.Forms.Button OkBT;
         private System.Windows.Forms.Label label2;
-        protected internal System.Windows.Forms.MaskedTextBox secondnameTB;
+        protected internal System.Windows.Forms.MaskedTextBox ExaminerTB;
         private System.Windows.Forms.Label label1;
         protected internal System.Windows.Forms.ComboBox DisciplinesCB;
         private System.Windows.Forms.Label label3;
-        protected internal System.Windows.Forms.NumericUpDown numericUpDown1;
+        protected internal System.Windows.Forms.NumericUpDown ScoreNumericUpDown;
         private System.Windows.Forms.Label label4;
-        protected internal System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        protected internal System.Windows.Forms.MaskedTextBox CommentTB;
     }
 }

@@ -30,6 +30,7 @@ namespace University
             EnrolleesDataGV.DataSource = db.Enrollees.Local.ToBindingList(); // абитуриенты
             DisciplinesDataGV.DataSource = db.Disciplines.Local.ToBindingList(); // дисциплины
         }
+
         // АБИТУРИЕНТ
         private void добавитьАбитуриентаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -245,11 +246,13 @@ namespace University
             {
                 foreach (DataGridViewRow i in EnrolleesDataGV.SelectedRows)
                 {
-                    ExamsForm exams = new ExamsForm();
                     bool converted = Int32.TryParse(EnrolleesDataGV[0, i.Index].Value.ToString(), out int id);
                     if (converted == false)
                         return;
-                    exams.ExamsDataGV.DataSource = db.ExamSheets.Local.ToBindingList().Where(idenrollee => idenrollee.EnrolleeId == id);
+                    ExamsForm exams = new ExamsForm(id);
+                    //exams.ExamsDataGV.DataSource = db.ExamSheets.Local.ToBindingList().Where(idenrollee => idenrollee.EnrolleeId == id);
+                    exams.ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == id).ToList();
+                    
                     exams.ShowDialog(this);
                 }
             }
