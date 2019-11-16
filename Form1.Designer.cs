@@ -44,13 +44,13 @@
             this.изменитьДанныеToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьДисциплинуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.SpecialtyDataGV = new System.Windows.Forms.DataGridView();
             this.menuStrip3 = new System.Windows.Forms.MenuStrip();
             this.добавитьСпециальностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьСпециальностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьСпециальностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.SpecialtyDataGV = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EnrolleesDataGV)).BeginInit();
@@ -59,9 +59,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.DisciplinesDataGV)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpecialtyDataGV)).BeginInit();
+            this.menuStrip3.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -195,7 +195,6 @@
             // 
             // удалитьДисциплинуToolStripMenuItem
             // 
-            this.удалитьДисциплинуToolStripMenuItem.Enabled = false;
             this.удалитьДисциплинуToolStripMenuItem.Name = "удалитьДисциплинуToolStripMenuItem";
             this.удалитьДисциплинуToolStripMenuItem.Size = new System.Drawing.Size(133, 20);
             this.удалитьДисциплинуToolStripMenuItem.Text = "Удалить дисциплину";
@@ -212,33 +211,19 @@
             this.tabPage3.Text = "Специальности";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // SpecialtyDataGV
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.888889F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(845, 515);
-            this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 482);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 30);
-            this.tableLayoutPanel2.TabIndex = 1;
+            this.SpecialtyDataGV.AllowUserToAddRows = false;
+            this.SpecialtyDataGV.AllowUserToDeleteRows = false;
+            this.SpecialtyDataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SpecialtyDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpecialtyDataGV.Location = new System.Drawing.Point(0, 24);
+            this.SpecialtyDataGV.Name = "SpecialtyDataGV";
+            this.SpecialtyDataGV.ReadOnly = true;
+            this.SpecialtyDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.SpecialtyDataGV.Size = new System.Drawing.Size(831, 423);
+            this.SpecialtyDataGV.TabIndex = 1;
+            this.SpecialtyDataGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpecialtyDataGV_CellDoubleClick);
             // 
             // menuStrip3
             // 
@@ -272,19 +257,33 @@
             this.удалитьСпециальностьToolStripMenuItem.Text = "Удалить специальность";
             this.удалитьСпециальностьToolStripMenuItem.Click += new System.EventHandler(this.удалитьСпециальностьToolStripMenuItem_Click);
             // 
-            // SpecialtyDataGV
+            // tableLayoutPanel1
             // 
-            this.SpecialtyDataGV.AllowUserToAddRows = false;
-            this.SpecialtyDataGV.AllowUserToDeleteRows = false;
-            this.SpecialtyDataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SpecialtyDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpecialtyDataGV.Location = new System.Drawing.Point(0, 24);
-            this.SpecialtyDataGV.Name = "SpecialtyDataGV";
-            this.SpecialtyDataGV.ReadOnly = true;
-            this.SpecialtyDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SpecialtyDataGV.Size = new System.Drawing.Size(831, 423);
-            this.SpecialtyDataGV.TabIndex = 1;
-            this.SpecialtyDataGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpecialtyDataGV_CellDoubleClick);
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.11111F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.888889F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(845, 515);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 2;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 482);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 30);
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
             // Form1
             // 
@@ -311,10 +310,10 @@
             this.menuStrip1.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SpecialtyDataGV)).EndInit();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpecialtyDataGV)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

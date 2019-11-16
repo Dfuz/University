@@ -228,9 +228,14 @@ namespace University
             {
                 try
                 {
-                    Discipline discipline = new Discipline();
+                    Discipline discipline = new Discipline();                   
                     discipline.Code = add.codeTB.Text;
                     discipline.Name = add.nameTB.Text;
+                    if (db.Disciplines.Where(b => b.Code == discipline.Code).Count() > 0)
+                    {
+                        MessageBox.Show("Такая дисциплина уже существует!");
+                        return;
+                    }
                     db.Disciplines.Add(discipline);
                     db.SaveChanges();
                     DisciplinesDataGV.Refresh();
@@ -329,8 +334,8 @@ namespace University
                         return;
 
                     Specialty specialty = db.Specialties.Find(id);
-                    info.listBox1.DataSource = specialty.Disciplines;
-                    info.listBox1.DisplayMember = "Name";
+                    info.DisciplineLB.DataSource = specialty.Disciplines;
+                    info.DisciplineLB.DisplayMember = "Name";
                     info.ShowDialog(this);
                 }
             }
@@ -362,7 +367,7 @@ namespace University
                         new { b.Id, b.Name }
                        )};
                 }
-                MessageBox.Show("УСПЕХ!");
+                MessageBox.Show("Информация успешно удалена");
             }
         }
     }

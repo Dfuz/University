@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDiscipline));
             this.CancelBT = new System.Windows.Forms.Button();
             this.OkBT = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -102,9 +103,10 @@
             this.Controls.Add(this.nameTB);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddDiscipline";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddDiscipline";
+            this.Text = "Добавление дисциплины";
             this.ResumeLayout(false);
             this.PerformLayout();
 

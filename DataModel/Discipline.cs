@@ -8,7 +8,7 @@ namespace University.DataModel
 {
     public class Discipline
     {
-        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DisplayName("id"), System.ComponentModel.ReadOnly(true)]
         public int Id { get; set; }
 
         [System.ComponentModel.DisplayName("Наименование дисциплины"), System.ComponentModel.ReadOnly(true)]

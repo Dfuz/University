@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddEnrollee));
             this.label1 = new System.Windows.Forms.Label();
             this.secondnameTB = new System.Windows.Forms.MaskedTextBox();
             this.firstnameTB = new System.Windows.Forms.MaskedTextBox();
@@ -151,9 +152,10 @@
             this.Controls.Add(this.secondnameTB);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddEnrollee";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "AddEnrollee";
+            this.Text = "Добавление абитуриента";
             ((System.ComponentModel.ISupportInitialize)(this.AgeNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
