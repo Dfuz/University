@@ -8,8 +8,13 @@ namespace University.DataModel
 {
     class Specialty
     {
+        public Specialty()
+        {
+            Disciplines = new List<Discipline>();
+        }
         public int Id { get; set; }
-        public List <string> Codes { get; set; }
         public string Name { get; set; }
+        public List <Discipline> Disciplines { get; set; }
+        
     }
 }

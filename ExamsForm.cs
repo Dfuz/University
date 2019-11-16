@@ -44,7 +44,18 @@ namespace University
                 examSheet.discipline = (Discipline)add.DisciplinesCB.SelectedItem;
                 db.ExamSheets.Add(examSheet); // добавление абитуриента
                 db.SaveChanges();
-                ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+                //ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+                ExamsDataGV.DataSource = new BindingSource
+                {
+                    DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList().Select(b =>
+                    new { b.Id, b.EnrolleeId, b.Examiner, b.discipline.Name, b.Score, b.Comment }
+                )};
+                ExamsDataGV.Columns[0].HeaderText = "id";
+                ExamsDataGV.Columns[1].HeaderText = "id абитуриента";
+                ExamsDataGV.Columns[2].HeaderText = "Экзаменатор";
+                ExamsDataGV.Columns[3].HeaderText = "Название дисциплины";
+                ExamsDataGV.Columns[4].HeaderText = "Количество набранных баллов";
+                ExamsDataGV.Columns[5].HeaderText = "Комментарий";
                 ExamsDataGV.Refresh();
             }
         }
@@ -91,7 +102,20 @@ namespace University
                         MessageBox.Show(ex.Message);
                     }
                 }
-                ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+                //dataGridView1.DataSource = new BindingSource { DataSource = list.Select(b => new { b.prop1, p2 = b.prop2.prop1, b.prop2.prop2 }) };
+                //ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+
+                ExamsDataGV.DataSource = new BindingSource 
+                { 
+                    DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList().Select(b => 
+                    new { b.Id, b.EnrolleeId, b.Examiner, b.discipline.Name, b.Score, b.Comment }
+                )}; // АХТУНГ
+                ExamsDataGV.Columns[0].HeaderText = "id";
+                ExamsDataGV.Columns[1].HeaderText = "id абитуриента";
+                ExamsDataGV.Columns[2].HeaderText = "Экзаменатор";
+                ExamsDataGV.Columns[3].HeaderText = "Название дисциплины";
+                ExamsDataGV.Columns[4].HeaderText = "Количество набранных баллов";
+                ExamsDataGV.Columns[5].HeaderText = "Комментарий";
                 ExamsDataGV.Refresh();
                 MessageBox.Show("Информация успешно обновлена!");
             }
@@ -113,7 +137,18 @@ namespace University
                         db.ExamSheets.Remove(examSheet);
                         db.SaveChanges();
                     }
-                    ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+                    //ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList();
+                    ExamsDataGV.DataSource = new BindingSource
+                    {
+                        DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == currentEnrolleeId).ToList().Select(b =>
+                        new { b.Id, b.EnrolleeId, b.Examiner, b.discipline.Name, b.Score, b.Comment }
+                    )};
+                    ExamsDataGV.Columns[0].HeaderText = "id";
+                    ExamsDataGV.Columns[1].HeaderText = "id абитуриента";
+                    ExamsDataGV.Columns[2].HeaderText = "Экзаменатор";
+                    ExamsDataGV.Columns[3].HeaderText = "Название дисциплины";
+                    ExamsDataGV.Columns[4].HeaderText = "Количество набранных баллов";
+                    ExamsDataGV.Columns[5].HeaderText = "Комментарий";
                     ExamsDataGV.Refresh();
 
                     MessageBox.Show("Удаление прошло успешно!");

@@ -29,6 +29,14 @@ namespace University
             /*Заполение DataGridView*/
             EnrolleesDataGV.DataSource = db.Enrollees.Local.ToBindingList(); // абитуриенты
             DisciplinesDataGV.DataSource = db.Disciplines.Local.ToBindingList(); // дисциплины
+            if (db.Specialties.ToList().Count > 0)
+            {
+                SpecialtyDataGV.DataSource = new BindingSource
+                {
+                    DataSource = db.Specialties.ToList().Select(b =>
+                    new { b.Id, b.Name }
+                )};
+            }
         }
 
         // АБИТУРИЕНТ
@@ -251,10 +259,110 @@ namespace University
                         return;
                     ExamsForm exams = new ExamsForm(id);
                     //exams.ExamsDataGV.DataSource = db.ExamSheets.Local.ToBindingList().Where(idenrollee => idenrollee.EnrolleeId == id);
-                    exams.ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == id).ToList();
-                    
+                    //exams.ExamsDataGV.DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == id).ToList();
+                    if (db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == id).ToList().Count > 0)
+                    {
+                        exams.ExamsDataGV.DataSource = new BindingSource
+                        {
+                            DataSource = db.ExamSheets.Where(idenrollee => idenrollee.EnrolleeId == id).ToList().Select(b =>
+                            new { b.Id, b.EnrolleeId, b.Examiner, b.discipline.Name, b.Score, b.Comment }
+                    ) };
+                        exams.ExamsDataGV.Columns[0].HeaderText = "id";
+                        exams.ExamsDataGV.Columns[1].HeaderText = "id абитуриента";
+                        exams.ExamsDataGV.Columns[2].HeaderText = "Экзаменатор";
+                        exams.ExamsDataGV.Columns[3].HeaderText = "Название дисциплины";
+                        exams.ExamsDataGV.Columns[4].HeaderText = "Количество набранных баллов";
+                        exams.ExamsDataGV.Columns[5].HeaderText = "Комментарий";
+                    }  
                     exams.ShowDialog(this);
                 }
+            }
+        }
+
+        // СПЕЦИАЛЬНОСТИ
+        private void добавитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var add = new AddSpecialty();
+            add.DisciplinesLB.DataSource = db.Disciplines.ToList();
+            add.DisciplinesLB.DisplayMember = "Name";
+
+            if (add.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    Specialty specialty = new Specialty();
+                    foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
+                    {
+                        specialty.Disciplines.Add((Discipline)selecteditem);
+                    }
+                    specialty.Name = add.SpecialtyMB.Text;
+                    db.Specialties.Add(specialty); 
+                    db.SaveChanges();
+                    SpecialtyDataGV.DataSource = new BindingSource
+                    {
+                        DataSource = db.Specialties.ToList().Select(b =>
+                        new { b.Id, b.Name }
+               )
+                    };
+                    MessageBox.Show("Специальность успешно добавлена!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                add.Close();
+            }
+        }
+
+        private void SpecialtyDataGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (SpecialtyDataGV.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+                {
+                    var info = new SpecialtyInfo();
+                    bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+                    if (converted == false)
+                        return;
+
+                    Specialty specialty = db.Specialties.Find(id);
+                    info.listBox1.DataSource = specialty.Disciplines;
+                    info.listBox1.DisplayMember = "Name";
+                    info.ShowDialog(this);
+                }
+            }
+        }
+
+        private void удалитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SpecialtyDataGV.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+                {
+                    bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+                    if (converted == false)
+                        return;
+
+                    Specialty specialty = db.Specialties.Find(id);
+                    db.Specialties.Remove(specialty);
+                    db.SaveChanges();
+                }
+                if (db.Specialties.ToList().Count == 0)
+                {
+                    SpecialtyDataGV.DataSource = null;
+                }
+                else
+                {
+                    SpecialtyDataGV.DataSource = new BindingSource
+                    {
+                        DataSource = db.Specialties.ToList().Select(b =>
+                        new { b.Id, b.Name }
+                       )};
+                }
+                MessageBox.Show("УСПЕХ!");
             }
         }
     }

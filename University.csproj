@@ -76,6 +76,12 @@
     <Compile Include="AddExam.Designer.cs">
       <DependentUpon>AddExam.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddSpecialty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSpecialty.Designer.cs">
+      <DependentUpon>AddSpecialty.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\Discipline.cs" />
     <Compile Include="DataModel\Enrollee.cs" />
     <Compile Include="DataModel\Exams.cs" />
@@ -96,6 +102,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpecialtyInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialtyInfo.Designer.cs">
+      <DependentUpon>SpecialtyInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddDiscipline.resx">
       <DependentUpon>AddDiscipline.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddExam.resx">
       <DependentUpon>AddExam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddSpecialty.resx">
+      <DependentUpon>AddSpecialty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExamsForm.resx">
       <DependentUpon>ExamsForm.cs</DependentUpon>
@@ -120,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SpecialtyInfo.resx">
+      <DependentUpon>SpecialtyInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
