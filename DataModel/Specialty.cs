@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace University.DataModel
 {
-    class Specialty
+    public class Specialty
     {
         public Specialty()
         {
@@ -14,7 +14,7 @@ namespace University.DataModel
         }
         public int Id { get; set; }
         public string Name { get; set; }
-        public List <Discipline> Disciplines { get; set; }
+        public ICollection<Discipline> Disciplines { get; set; }
         
     }
 }

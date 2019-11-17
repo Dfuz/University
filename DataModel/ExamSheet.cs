@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace University.DataModel
 {
-    class ExamSheet
+    public class ExamSheet
     {
         [System.ComponentModel.DisplayName("id"), System.ComponentModel.ReadOnly(true)]
         public int Id { get; set; }

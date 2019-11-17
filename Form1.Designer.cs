@@ -215,6 +215,7 @@
             // 
             this.SpecialtyDataGV.AllowUserToAddRows = false;
             this.SpecialtyDataGV.AllowUserToDeleteRows = false;
+            this.SpecialtyDataGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.SpecialtyDataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SpecialtyDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpecialtyDataGV.Location = new System.Drawing.Point(0, 24);
@@ -249,6 +250,7 @@
             this.изменитьСпециальностьToolStripMenuItem.Name = "изменитьСпециальностьToolStripMenuItem";
             this.изменитьСпециальностьToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
             this.изменитьСпециальностьToolStripMenuItem.Text = "Изменить специальность";
+            this.изменитьСпециальностьToolStripMenuItem.Click += new System.EventHandler(this.изменитьСпециальностьToolStripMenuItem_Click);
             // 
             // удалитьСпециальностьToolStripMenuItem
             // 

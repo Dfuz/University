@@ -39,7 +39,9 @@ namespace University
             }
         }
 
-        // АБИТУРИЕНТ
+        /*-----------------------------------------------------------------------*/
+        /*             Методы связанные с таблицей АБИТУРИЕНТЫ                   */
+        /*-----------------------------------------------------------------------*/
         private void добавитьАбитуриентаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddEnrollee add = new AddEnrollee();
@@ -149,7 +151,9 @@ namespace University
             }
         }
 
-        // ДИСЦИПЛИНА 
+        /*-----------------------------------------------------------------------*/
+        /*             Методы связанные с таблицей ДИСЦИПЛИНЫ                    */
+        /*-----------------------------------------------------------------------*/
         private void изменитьДанныеToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (DisciplinesDataGV.SelectedRows.Count > 0)
@@ -231,6 +235,7 @@ namespace University
                     Discipline discipline = new Discipline();                   
                     discipline.Code = add.codeTB.Text;
                     discipline.Name = add.nameTB.Text;
+                    discipline.Specialties = new List<Specialty>();
                     if (db.Disciplines.Where(b => b.Code == discipline.Code).Count() > 0)
                     {
                         MessageBox.Show("Такая дисциплина уже существует!");
@@ -252,7 +257,9 @@ namespace University
             }
         }
 
-        // ЭКЗАМЕНЫ
+        /*-----------------------------------------------------------------------*/
+        /*             Методы связанные с таблицей ЭКЗАМЕНЫ                      */
+        /*-----------------------------------------------------------------------*/
         private void информацияОбЭкзаменахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (EnrolleesDataGV.SelectedRows.Count > 0)
@@ -284,7 +291,9 @@ namespace University
             }
         }
 
-        // СПЕЦИАЛЬНОСТИ
+        /*-----------------------------------------------------------------------*/
+        /*             Методы связанные с таблицей СПЕЦИАЛЬНОСТИ                 */
+        /*-----------------------------------------------------------------------*/
         private void добавитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var add = new AddSpecialty();
@@ -296,6 +305,7 @@ namespace University
                 try
                 {
                     Specialty specialty = new Specialty();
+                    specialty.Disciplines = new List<Discipline>();
                     foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
                     {
                         specialty.Disciplines.Add((Discipline)selecteditem);
@@ -309,6 +319,7 @@ namespace University
                         new { b.Id, b.Name }
                )
                     };
+                   // SpecialtyDataGV.Refresh();
                     MessageBox.Show("Специальность успешно добавлена!");
                 }
                 catch (Exception ex)
@@ -368,6 +379,66 @@ namespace University
                        )};
                 }
                 MessageBox.Show("Информация успешно удалена");
+            }
+        }
+
+        private void изменитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SpecialtyDataGV.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+                {
+                    bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+                    if (converted == false)
+                        return;
+
+                    Specialty specialty = db.Specialties.Find(id);
+
+                    //db.Specialties.Remove(specialty);
+                    var add = new AddSpecialty(); // создаем форму для изменения
+                    add.DisciplinesLB.DataSource = db.Disciplines.ToList(); /// делаем привязку к таблице с дисциплинами
+                    add.DisciplinesLB.DisplayMember = "Name";               /// выводим на экран значение атрибута Name
+                    add.SpecialtyMB.Text = specialty.Name;
+                    if (add.ShowDialog(this) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            specialty.Disciplines.Clear(); // перед перезаписью очищаем список дисциплин
+                            foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
+                            {
+                                specialty.Disciplines.Add((Discipline)selecteditem);
+                            }
+                            specialty.Name = add.SpecialtyMB.Text;
+                            db.SaveChanges();
+                            SpecialtyDataGV.DataSource = new BindingSource
+                            {
+                                DataSource = db.Specialties.ToList().Select(b =>
+                                new { b.Id, b.Name }
+                       )
+                            };
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                } // по каждой выделенной строке
+
+                // если в таблице 0 специальностей
+                if (db.Specialties.ToList().Count == 0)
+                {
+                    SpecialtyDataGV.DataSource = null;
+                }
+                else
+                {
+                    SpecialtyDataGV.DataSource = new BindingSource
+                    {
+                        DataSource = db.Specialties.ToList().Select(b =>
+                        new { b.Id, b.Name }
+                       )
+                    };
+                }
+                MessageBox.Show("Информация успешно изменена");
             }
         }
     }

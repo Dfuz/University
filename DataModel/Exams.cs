@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace University.DataModel
 {
-    class Exams
+    public class Exams
     {
         [System.ComponentModel.Browsable(false)]
         public int Id { get; set; }
