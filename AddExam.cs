@@ -25,10 +25,15 @@ namespace University
             ExaminerTB.Text = Examiner;
             CommentTB.Text = Comment;
             ScoreNumericUpDown.Value = Score;
+            if (DisciplinesCB.SelectedItem == null)
+            {
+                OkBT.Enabled = false;
+            }
+           
         }
         private void checkTB()
         {
-            if (ExaminerTB.Text != "" && CommentTB.Text != "")
+            if (ExaminerTB.Text != "" && CommentTB.Text != "" && DisciplinesCB.SelectedItem != null)
             {
                 OkBT.Enabled = true;
             }
@@ -42,6 +47,12 @@ namespace University
         }
 
         private void CommentTB_TextChanged(object sender, EventArgs e)
+        {
+            checkTB();
+            return;
+        }
+
+        private void DisciplinesCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             checkTB();
             return;

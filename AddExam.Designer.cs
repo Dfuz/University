@@ -92,9 +92,11 @@
             // 
             this.DisciplinesCB.FormattingEnabled = true;
             this.DisciplinesCB.Location = new System.Drawing.Point(113, 69);
+            this.DisciplinesCB.MaxDropDownItems = 100;
             this.DisciplinesCB.Name = "DisciplinesCB";
             this.DisciplinesCB.Size = new System.Drawing.Size(211, 21);
             this.DisciplinesCB.TabIndex = 21;
+            this.DisciplinesCB.SelectedIndexChanged += new System.EventHandler(this.DisciplinesCB_SelectedIndexChanged);
             // 
             // label3
             // 
