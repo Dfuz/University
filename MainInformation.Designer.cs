@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainInformation));
             this.MainDataGV = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGV)).BeginInit();
@@ -35,6 +36,7 @@
             // 
             // MainDataGV
             // 
+            this.MainDataGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.MainDataGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.MainDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainDataGV.Location = new System.Drawing.Point(0, 24);
@@ -57,10 +59,11 @@
             this.ClientSize = new System.Drawing.Size(667, 366);
             this.Controls.Add(this.MainDataGV);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "MainInformation";
+            this.Text = "Возможный выбор специальностей";
             ((System.ComponentModel.ISupportInitialize)(this.MainDataGV)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

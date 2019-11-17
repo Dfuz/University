@@ -53,6 +53,8 @@
             // 
             // secondnameTB
             // 
+            this.secondnameTB.AsciiOnly = true;
+            this.secondnameTB.BeepOnError = true;
             this.secondnameTB.Location = new System.Drawing.Point(111, 31);
             this.secondnameTB.Name = "secondnameTB";
             this.secondnameTB.Size = new System.Drawing.Size(211, 20);
@@ -61,6 +63,7 @@
             // 
             // firstnameTB
             // 
+            this.firstnameTB.AsciiOnly = true;
             this.firstnameTB.Location = new System.Drawing.Point(111, 70);
             this.firstnameTB.Name = "firstnameTB";
             this.firstnameTB.Size = new System.Drawing.Size(211, 20);
@@ -69,6 +72,7 @@
             // 
             // patronymicTB
             // 
+            this.patronymicTB.AsciiOnly = true;
             this.patronymicTB.Location = new System.Drawing.Point(111, 111);
             this.patronymicTB.Name = "patronymicTB";
             this.patronymicTB.Size = new System.Drawing.Size(211, 20);

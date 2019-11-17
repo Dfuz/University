@@ -76,6 +76,7 @@
             // 
             // nameTB
             // 
+            this.nameTB.AsciiOnly = true;
             this.nameTB.Location = new System.Drawing.Point(140, 49);
             this.nameTB.Name = "nameTB";
             this.nameTB.Size = new System.Drawing.Size(211, 20);
