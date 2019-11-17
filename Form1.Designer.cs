@@ -51,6 +51,7 @@
             this.удалитьСпециальностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.информацияПоСпециальностямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EnrolleesDataGV)).BeginInit();
@@ -73,7 +74,7 @@
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(839, 473);
+            this.tabControl1.Size = new System.Drawing.Size(839, 492);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -83,7 +84,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(831, 447);
+            this.tabPage1.Size = new System.Drawing.Size(831, 466);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Абитуриенты";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -98,7 +99,7 @@
             this.EnrolleesDataGV.Location = new System.Drawing.Point(3, 27);
             this.EnrolleesDataGV.Name = "EnrolleesDataGV";
             this.EnrolleesDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EnrolleesDataGV.Size = new System.Drawing.Size(825, 417);
+            this.EnrolleesDataGV.Size = new System.Drawing.Size(825, 436);
             this.EnrolleesDataGV.TabIndex = 1;
             this.EnrolleesDataGV.KeyUp += new System.Windows.Forms.KeyEventHandler(this.EnrolleesDataGV_KeyUp);
             // 
@@ -108,6 +109,7 @@
             this.добавитьАбитуриентаToolStripMenuItem,
             this.изменитьДанныеToolStripMenuItem,
             this.информацияОбЭкзаменахToolStripMenuItem,
+            this.информацияПоСпециальностямToolStripMenuItem,
             this.удалитьАбитуриентаToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(3, 3);
             this.menuStrip2.Name = "menuStrip2";
@@ -269,8 +271,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93.11111F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.888889F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.8932F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.106796F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(845, 515);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -280,12 +282,19 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 482);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 501);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 30);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 11);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // информацияПоСпециальностямToolStripMenuItem
+            // 
+            this.информацияПоСпециальностямToolStripMenuItem.Name = "информацияПоСпециальностямToolStripMenuItem";
+            this.информацияПоСпециальностямToolStripMenuItem.Size = new System.Drawing.Size(205, 20);
+            this.информацияПоСпециальностямToolStripMenuItem.Text = "Информация по специальностям";
+            this.информацияПоСпециальностямToolStripMenuItem.Click += new System.EventHandler(this.информацияПоСпециальностямToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -344,6 +353,7 @@
         private System.Windows.Forms.ToolStripMenuItem добавитьСпециальностьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem изменитьСпециальностьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem удалитьСпециальностьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияПоСпециальностямToolStripMenuItem;
     }
 }
 

@@ -8,13 +8,12 @@ namespace University.DataModel
 {
     public class Specialty
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public virtual ICollection<Discipline> Disciplines { get; set; }
         public Specialty()
         {
             Disciplines = new List<Discipline>();
         }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Discipline> Disciplines { get; set; }
-        
     }
 }

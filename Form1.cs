@@ -25,7 +25,7 @@ namespace University
             db.Specialties.Load();
             db.ExamSheets.Load();
             db.Disciplines.Load();
-
+            //db.Specialties.
             /*Заполение DataGridView*/
             EnrolleesDataGV.DataSource = db.Enrollees.Local.ToBindingList(); // абитуриенты
             DisciplinesDataGV.DataSource = db.Disciplines.Local.ToBindingList(); // дисциплины
@@ -235,7 +235,7 @@ namespace University
                     Discipline discipline = new Discipline();                   
                     discipline.Code = add.codeTB.Text;
                     discipline.Name = add.nameTB.Text;
-                    discipline.Specialties = new List<Specialty>();
+                    //discipline.Specialties = new List<Specialty>();
                     if (db.Disciplines.Where(b => b.Code == discipline.Code).Count() > 0)
                     {
                         MessageBox.Show("Такая дисциплина уже существует!");
@@ -305,11 +305,13 @@ namespace University
                 try
                 {
                     Specialty specialty = new Specialty();
-                    specialty.Disciplines = new List<Discipline>();
+                    //specialty.Disciplines = new List<Discipline>();
+                    List<Discipline> disciplines = new List<Discipline>();
                     foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
                     {
-                        specialty.Disciplines.Add((Discipline)selecteditem);
+                        disciplines.Add((Discipline)selecteditem);
                     }
+                    specialty.Disciplines = disciplines;
                     specialty.Name = add.SpecialtyMB.Text;
                     db.Specialties.Add(specialty); 
                     db.SaveChanges();
@@ -343,10 +345,20 @@ namespace University
                     bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
                     if (converted == false)
                         return;
-
+                    //Specialty specialty = new Specialty();
                     Specialty specialty = db.Specialties.Find(id);
+                   // Discipline discipline = db.Disciplines.Where(b => b.Specialties == specialty);
+                    //List<Discipline> disciplines = db.Disciplines.ToList();
+
+                    /*foreach (var discipline in disciplines)
+                    {
+                        if (specialty.Disciplines.Contains(discipline))
+                            specialty.Disciplines.Add(discipline);
+                    }*/
                     info.DisciplineLB.DataSource = specialty.Disciplines;
                     info.DisciplineLB.DisplayMember = "Name";
+                    info.DisciplineLB.ValueMember = "Id";
+                    //db.SaveChanges();
                     info.ShowDialog(this);
                 }
             }
@@ -384,61 +396,101 @@ namespace University
 
         private void изменитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (SpecialtyDataGV.SelectedRows.Count > 0)
+            //if (SpecialtyDataGV.SelectedRows.Count > 0)
+            //{
+            //    foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+            //    {
+            //        bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+            //        if (converted == false)
+            //            return;
+
+            //        Specialty specialty = db.Specialties.Find(id);
+
+            //        //db.Specialties.Remove(specialty);
+            //        var add = new AddSpecialty(); // создаем форму для изменения
+            //        add.DisciplinesLB.DataSource = db.Disciplines.ToList(); /// делаем привязку к таблице с дисциплинами
+            //        add.DisciplinesLB.DisplayMember = "Name";               /// выводим на экран значение атрибута Name
+            //        add.SpecialtyMB.Text = specialty.Name;
+            //        if (add.ShowDialog(this) == DialogResult.OK)
+            //        {
+            //            try
+            //            {
+            //                //specialty.Disciplines.Clear(); // перед перезаписью очищаем список дисциплин
+            //                foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
+            //                {
+            //                    specialty.Disciplines.Add((Discipline)selecteditem);
+            //                }
+            //                specialty.Name = add.SpecialtyMB.Text;
+            //                db.SaveChanges();
+            //                SpecialtyDataGV.DataSource = new BindingSource
+            //                {
+            //                    DataSource = db.Specialties.ToList().Select(b =>
+            //                    new { b.Id, b.Name }
+            //           )
+            //                };
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                MessageBox.Show(ex.Message);
+            //            }
+            //        }
+            //    } // по каждой выделенной строке
+
+            //    // если в таблице 0 специальностей
+            //    if (db.Specialties.ToList().Count == 0)
+            //    {
+            //        SpecialtyDataGV.DataSource = null;
+            //    }
+            //    else
+            //    {
+            //        SpecialtyDataGV.DataSource = new BindingSource
+            //        {
+            //            DataSource = db.Specialties.ToList().Select(b =>
+            //            new { b.Id, b.Name }
+            //           )
+            //        };
+            //    }
+            //    MessageBox.Show("Информация успешно изменена");
+            //}
+        }
+
+        private void информацияПоСпециальностямToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (EnrolleesDataGV.SelectedRows.Count > 0)
             {
-                foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+                foreach (DataGridViewRow i in EnrolleesDataGV.SelectedRows)
                 {
-                    bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+                    bool converted = Int32.TryParse(EnrolleesDataGV[0, i.Index].Value.ToString(), out int id);
                     if (converted == false)
                         return;
+                    Enrollee enrollee = db.Enrollees.Find(id);
+                    List<ExamSheet> examSheets = db.ExamSheets.Where(p => p.EnrolleeId == enrollee.Id).ToList();
+                    HashSet<Discipline> disciplines = new HashSet<Discipline>();
 
-                    Specialty specialty = db.Specialties.Find(id);
-
-                    //db.Specialties.Remove(specialty);
-                    var add = new AddSpecialty(); // создаем форму для изменения
-                    add.DisciplinesLB.DataSource = db.Disciplines.ToList(); /// делаем привязку к таблице с дисциплинами
-                    add.DisciplinesLB.DisplayMember = "Name";               /// выводим на экран значение атрибута Name
-                    add.SpecialtyMB.Text = specialty.Name;
-                    if (add.ShowDialog(this) == DialogResult.OK)
+                    foreach (var examSheet in examSheets)
                     {
-                        try
+                        disciplines.Add(examSheet.discipline);
+                    }
+
+                    List<Specialty> specialties = new List<Specialty>();
+                    List<Specialty> specialtiesbuffer = new List<Specialty>(); // буферный дрыст
+                    //specialties = db.Specialties.Where(p => /*p.Disciplines == disciplines*/p.Disciplines.SequenceEqual(disciplines)).ToList();
+                    specialties = db.Specialties.ToList();
+                    specialtiesbuffer = db.Specialties.ToList();
+                    foreach (var specialty in specialtiesbuffer)
+                    {
+                        if (specialty.Disciplines.ToHashSet().IsSubsetOf(disciplines) == false)
                         {
-                            specialty.Disciplines.Clear(); // перед перезаписью очищаем список дисциплин
-                            foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
-                            {
-                                specialty.Disciplines.Add((Discipline)selecteditem);
-                            }
-                            specialty.Name = add.SpecialtyMB.Text;
-                            db.SaveChanges();
-                            SpecialtyDataGV.DataSource = new BindingSource
-                            {
-                                DataSource = db.Specialties.ToList().Select(b =>
-                                new { b.Id, b.Name }
-                       )
-                            };
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
+                            specialties.Remove(specialty);
                         }
                     }
-                } // по каждой выделенной строке
-
-                // если в таблице 0 специальностей
-                if (db.Specialties.ToList().Count == 0)
-                {
-                    SpecialtyDataGV.DataSource = null;
-                }
-                else
-                {
-                    SpecialtyDataGV.DataSource = new BindingSource
+                    var info = new MainInformation();
+                    if (specialties.Count > 0)
                     {
-                        DataSource = db.Specialties.ToList().Select(b =>
-                        new { b.Id, b.Name }
-                       )
-                    };
+                        info.MainDataGV.DataSource = specialties;
+                    }
+                    info.ShowDialog(this);
                 }
-                MessageBox.Show("Информация успешно изменена");
             }
         }
     }

@@ -8,10 +8,7 @@ namespace University.DataModel
 {
     public class Discipline
     {
-        public Discipline()
-        {
-            Specialties = new List<Specialty>();
-        }
+       
         [System.ComponentModel.DisplayName("id"), System.ComponentModel.ReadOnly(true)]
         public int Id { get; set; }
 
@@ -21,7 +18,11 @@ namespace University.DataModel
         [System.ComponentModel.DisplayName("Код дисциплины"), System.ComponentModel.ReadOnly(true)]
         public string Code { get; set; }
 
-        [System.ComponentModel.Browsable(false)]
-        public ICollection<Specialty> Specialties { get; set; }
+        //[System.ComponentModel.Browsable(false)]
+        public virtual ICollection<Specialty> Specialties { get; set; }
+        public Discipline()
+        {
+            Specialties = new List<Specialty>();
+        }
     }
 }
