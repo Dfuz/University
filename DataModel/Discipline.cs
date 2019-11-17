@@ -18,7 +18,7 @@ namespace University.DataModel
         [System.ComponentModel.DisplayName("Код дисциплины"), System.ComponentModel.ReadOnly(true)]
         public string Code { get; set; }
 
-        //[System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.Browsable(false)]
         public virtual ICollection<Specialty> Specialties { get; set; }
         public Discipline()
         {

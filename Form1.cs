@@ -396,62 +396,62 @@ namespace University
 
         private void изменитьСпециальностьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //if (SpecialtyDataGV.SelectedRows.Count > 0)
-            //{
-            //    foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
-            //    {
-            //        bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
-            //        if (converted == false)
-            //            return;
+            if (SpecialtyDataGV.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow i in SpecialtyDataGV.SelectedRows)
+                {
+                    bool converted = Int32.TryParse(SpecialtyDataGV[0, i.Index].Value.ToString(), out int id);
+                    if (converted == false)
+                        return;
 
-            //        Specialty specialty = db.Specialties.Find(id);
+                    Specialty specialty = db.Specialties.Find(id);
 
-            //        //db.Specialties.Remove(specialty);
-            //        var add = new AddSpecialty(); // создаем форму для изменения
-            //        add.DisciplinesLB.DataSource = db.Disciplines.ToList(); /// делаем привязку к таблице с дисциплинами
-            //        add.DisciplinesLB.DisplayMember = "Name";               /// выводим на экран значение атрибута Name
-            //        add.SpecialtyMB.Text = specialty.Name;
-            //        if (add.ShowDialog(this) == DialogResult.OK)
-            //        {
-            //            try
-            //            {
-            //                //specialty.Disciplines.Clear(); // перед перезаписью очищаем список дисциплин
-            //                foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
-            //                {
-            //                    specialty.Disciplines.Add((Discipline)selecteditem);
-            //                }
-            //                specialty.Name = add.SpecialtyMB.Text;
-            //                db.SaveChanges();
-            //                SpecialtyDataGV.DataSource = new BindingSource
-            //                {
-            //                    DataSource = db.Specialties.ToList().Select(b =>
-            //                    new { b.Id, b.Name }
-            //           )
-            //                };
-            //            }
-            //            catch (Exception ex)
-            //            {
-            //                MessageBox.Show(ex.Message);
-            //            }
-            //        }
-            //    } // по каждой выделенной строке
+                    //db.Specialties.Remove(specialty);
+                    var add = new AddSpecialty(); // создаем форму для изменения
+                    add.DisciplinesLB.DataSource = db.Disciplines.ToList(); /// делаем привязку к таблице с дисциплинами
+                    add.DisciplinesLB.DisplayMember = "Name";               /// выводим на экран значение атрибута Name
+                    add.SpecialtyMB.Text = specialty.Name;
+                    if (add.ShowDialog(this) == DialogResult.OK)
+                    {
+                        try
+                        {
+                            specialty.Disciplines.Clear(); // перед перезаписью очищаем список дисциплин
+                            foreach (Object selecteditem in add.DisciplinesLB.SelectedItems)
+                            {
+                                specialty.Disciplines.Add((Discipline)selecteditem);
+                            }
+                            specialty.Name = add.SpecialtyMB.Text;
+                            db.SaveChanges();
+                            SpecialtyDataGV.DataSource = new BindingSource
+                            {
+                                DataSource = db.Specialties.ToList().Select(b =>
+                                new { b.Id, b.Name }
+                       )
+                            };
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                } // по каждой выделенной строке
 
-            //    // если в таблице 0 специальностей
-            //    if (db.Specialties.ToList().Count == 0)
-            //    {
-            //        SpecialtyDataGV.DataSource = null;
-            //    }
-            //    else
-            //    {
-            //        SpecialtyDataGV.DataSource = new BindingSource
-            //        {
-            //            DataSource = db.Specialties.ToList().Select(b =>
-            //            new { b.Id, b.Name }
-            //           )
-            //        };
-            //    }
-            //    MessageBox.Show("Информация успешно изменена");
-            //}
+                // если в таблице 0 специальностей
+                if (db.Specialties.ToList().Count == 0)
+                {
+                    SpecialtyDataGV.DataSource = null;
+                }
+                else
+                {
+                    SpecialtyDataGV.DataSource = new BindingSource
+                    {
+                        DataSource = db.Specialties.ToList().Select(b =>
+                        new { b.Id, b.Name }
+                       )
+                    };
+                }
+                MessageBox.Show("Информация успешно изменена");
+            }
         }
 
         private void информацияПоСпециальностямToolStripMenuItem_Click(object sender, EventArgs e)
