@@ -84,7 +84,6 @@
     </Compile>
     <Compile Include="DataModel\Discipline.cs" />
     <Compile Include="DataModel\Enrollee.cs" />
-    <Compile Include="DataModel\Exams.cs" />
     <Compile Include="DataModel\ExamSheet.cs" />
     <Compile Include="DataModel\Specialty.cs" />
     <Compile Include="DataModel\UniversityContext.cs" />

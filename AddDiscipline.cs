@@ -22,7 +22,7 @@ namespace University
             InitializeComponent();
             nameTB.Text = Name;
             codeTB.Text = Code;
-            OkBT.Enabled = false;
+            checkTB();
         }
         private void checkTB()
         {

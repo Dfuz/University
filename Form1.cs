@@ -182,6 +182,7 @@ namespace University
                             {
                                 MessageBox.Show(ex.Message);
                             }
+                            MessageBox.Show("Информация успешно обновлена!");
                         }
                         else
                         {
@@ -193,8 +194,7 @@ namespace University
                     {
                         MessageBox.Show(ex.Message);
                     }
-                }
-                MessageBox.Show("Информация успешно обновлена!");
+                }        
             }
         }
 
