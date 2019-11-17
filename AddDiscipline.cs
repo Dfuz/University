@@ -15,7 +15,7 @@ namespace University
         public AddDiscipline()
         {
             InitializeComponent();
-            OkBT.Enabled = false;
+            checkTB();
         }
         public AddDiscipline(string Name, string Code)
         {

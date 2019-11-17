@@ -422,12 +422,7 @@ namespace University
                             }
                             specialty.Name = add.SpecialtyMB.Text;
                             db.SaveChanges();
-                            SpecialtyDataGV.DataSource = new BindingSource
-                            {
-                                DataSource = db.Specialties.ToList().Select(b =>
-                                new { b.Id, b.Name }
-                       )
-                            };
+                            
                         }
                         catch (Exception ex)
                         {
@@ -435,7 +430,12 @@ namespace University
                         }
                     }
                 } // по каждой выделенной строке
-
+                SpecialtyDataGV.DataSource = new BindingSource
+                {
+                    DataSource = db.Specialties.ToList().Select(b =>
+                    new { b.Id, b.Name }
+                            )
+                };
                 // если в таблице 0 специальностей
                 if (db.Specialties.ToList().Count == 0)
                 {

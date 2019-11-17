@@ -36,6 +36,7 @@
             this.добавитьАбитуриентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьДанныеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информацияОбЭкзаменахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияПоСпециальностямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьАбитуриентаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DisciplinesDataGV = new System.Windows.Forms.DataGridView();
@@ -51,7 +52,6 @@
             this.удалитьСпециальностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.информацияПоСпециальностямToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EnrolleesDataGV)).BeginInit();
@@ -138,6 +138,13 @@
             this.информацияОбЭкзаменахToolStripMenuItem.Text = "Информация об экзаменах";
             this.информацияОбЭкзаменахToolStripMenuItem.Click += new System.EventHandler(this.информацияОбЭкзаменахToolStripMenuItem_Click);
             // 
+            // информацияПоСпециальностямToolStripMenuItem
+            // 
+            this.информацияПоСпециальностямToolStripMenuItem.Name = "информацияПоСпециальностямToolStripMenuItem";
+            this.информацияПоСпециальностямToolStripMenuItem.Size = new System.Drawing.Size(205, 20);
+            this.информацияПоСпециальностямToolStripMenuItem.Text = "Информация по специальностям";
+            this.информацияПоСпециальностямToolStripMenuItem.Click += new System.EventHandler(this.информацияПоСпециальностямToolStripMenuItem_Click);
+            // 
             // удалитьАбитуриентаToolStripMenuItem
             // 
             this.удалитьАбитуриентаToolStripMenuItem.Name = "удалитьАбитуриентаToolStripMenuItem";
@@ -152,7 +159,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(831, 447);
+            this.tabPage2.Size = new System.Drawing.Size(831, 466);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Дисциплины";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -166,7 +173,8 @@
             this.DisciplinesDataGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DisciplinesDataGV.Location = new System.Drawing.Point(3, 27);
             this.DisciplinesDataGV.Name = "DisciplinesDataGV";
-            this.DisciplinesDataGV.Size = new System.Drawing.Size(825, 417);
+            this.DisciplinesDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DisciplinesDataGV.Size = new System.Drawing.Size(825, 436);
             this.DisciplinesDataGV.TabIndex = 2;
             // 
             // menuStrip1
@@ -208,7 +216,7 @@
             this.tabPage3.Controls.Add(this.menuStrip3);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(831, 447);
+            this.tabPage3.Size = new System.Drawing.Size(831, 466);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Специальности";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -224,7 +232,7 @@
             this.SpecialtyDataGV.Name = "SpecialtyDataGV";
             this.SpecialtyDataGV.ReadOnly = true;
             this.SpecialtyDataGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.SpecialtyDataGV.Size = new System.Drawing.Size(831, 423);
+            this.SpecialtyDataGV.Size = new System.Drawing.Size(831, 442);
             this.SpecialtyDataGV.TabIndex = 1;
             this.SpecialtyDataGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SpecialtyDataGV_CellDoubleClick);
             // 
@@ -288,13 +296,6 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(839, 11);
             this.tableLayoutPanel2.TabIndex = 1;
-            // 
-            // информацияПоСпециальностямToolStripMenuItem
-            // 
-            this.информацияПоСпециальностямToolStripMenuItem.Name = "информацияПоСпециальностямToolStripMenuItem";
-            this.информацияПоСпециальностямToolStripMenuItem.Size = new System.Drawing.Size(205, 20);
-            this.информацияПоСпециальностямToolStripMenuItem.Text = "Информация по специальностям";
-            this.информацияПоСпециальностямToolStripMenuItem.Click += new System.EventHandler(this.информацияПоСпециальностямToolStripMenuItem_Click);
             // 
             // Form1
             // 
